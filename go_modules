@@ -393,6 +393,9 @@ def main():
 
             if args.mode == "workspace":
                 cp = cmd_go_env(["GOWORK"], go_mod_dir)
+                if cp.returncode:
+                    log.error("go env GOWORK failed")
+                    exit(1)
                 go_work_path = cp.stdout.decode("utf-8").strip()
                 if go_work_path and os.path.exists(go_work_path):
                     log.info(f"Using go.work found at {go_work_path}")
