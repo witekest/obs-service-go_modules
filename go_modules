@@ -303,7 +303,10 @@ def main():
         action="append",
         help="go mod edit require argument: 'module@version'. Can be used multiple times.",
     )
-    parser.add_argument("--mode", default="mod")
+    parser.add_argument(
+        "--mode",
+        default="mod",
+        help="Define mode of operation: mod or workspace")
     args = parser.parse_args()
 
     outdir = args.outdir
